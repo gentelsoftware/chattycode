@@ -1,0 +1,35 @@
+
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Log In | Chatty Code </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+</head>
+<body translate="no" >
+  	<div class="container center-align">
+		<h2 class="form__title">Chatty Code</h2>
+
+		<!-- Sign Up -->
+		<form action="#" class="form" id="newroomform">
+			<input type="text" name="chatty_name" placeholder="Chatty Name" class="input" />
+			<input type="text" name="room_name" placeholder="Room Name" class="input" />
+			<div class="response"></div>
+			<button class="btn z-depth-0" style="background:#444753;" type="submit">Start Chat</button>
+			<div style="margin-top:20px;"><span class="room_toggler" data-idopen="loginform">Join Room</span></div>
+		</form>
+
+		<form action="#" class="form" id="loginform" style="display:none;">
+			<input type="text" name="chatty_code" placeholder="Enter Chatty Code" class="input" />
+			<div class="response"></div>
+			<button class="btn z-depth-0" style="background:#444753;" type="submit">Join Room</button>
+			<div style="margin-top:20px;"><span class="room_toggler" data-idopen="newroomform" >Start Chatty Room</span></div>
+		</form>
+	</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+<script src="/static/js/login.js"></script>
+</body>
+</html>

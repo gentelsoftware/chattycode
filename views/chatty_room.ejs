@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>chatty code</title>
+  <link rel="stylesheet" href="/static/css/chattycode.css">
+  <link rel="stylesheet" href="/static/css/main.css">
+  <link rel="stylesheet" href="/static/css/responsive.css">
+  <link rel="icon" type="image/png" href="#">
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body translate="no" >
+  <div class="container clearfix">
+    <div class="people-list" id="people-list">
+      <!-- Search Input -->
+      <div class="search"><input type="text" id="search_member" placeholder="search" /><i class="fa fa-search"></i></div>
+      <!-- Chatty Member -->
+      <ul class="list" id="chatty_member"> <%- locals.member_list %> </ul>
+      <!-- End of member list -->
+    </div>
+    
+    <div class="chat">
+
+      <!-- Chat Room Handle -->
+      <div class="chat-header clearfix">
+        <div class="top row" style="margin:0px !important;height:100%;">
+          <div class="col s10 m10 l10 xl10">
+            <div class="chat-with"><%- locals.room_name %></div>
+            <div class="chat-num-messages"><%- locals.chattycode %></div>
+          </div>
+          <div class="col s2 m2 l2 xl2 valign-wrapper" style="height:100%;text-align: center !important;">
+            <i class="material-icons" onclick="location.replace('/logout')">arrow_forward</i>
+          </div>
+        </div>
+      </div>
+      
+      <!-- message body -->
+      <div class="chat-history" id="chat-history" ><ul id="chatty_list"><%- locals.messages %></ul></div>
+      <!-- end message body -->
+
+      <!-- Message input -->
+      <div class="chat-message clearfix">
+        <input type="hidden" id="chatty_code" value="<%- locals.chattycode %>">
+        <input type="hidden" id="user_name" value="<%- locals.user_name %>">
+        <input type="hidden" id="user_id" value="<%- locals.user_id %>">
+        <textarea name="message-to-send" id="message-to-send" placeholder ="<%- locals.username %> Type your message" rows="3"></textarea>    
+        <button id="send_message"><i class="material-icons">send</i></button>
+      </div>
+      <!-- end message input -->
+
+    </div> <!-- end chat -->
+    <div id="invite_member" class="tools center">
+      <form id="invite_form" method="post">
+        <input type="text" id="invite_user" placeholder="User Name">
+        <input type="text" id="user_number" placeholder="Phone Number">
+        <button type="button" class="btn" id="send_code" style="background:#434651;">Send Chat Link</button>
+      </form>
+    </div>
+  </div> <!-- end container -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.1/socket.io.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+  <script src="/static/js/index.js"></script>
+</body>
+</html>
+ 
