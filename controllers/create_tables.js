@@ -27,8 +27,8 @@ var create_tables=()=>{
     //This save the position of each member in hub
     conn.query(`CREATE TABLE IF NOT EXISTS messages(
                     message_id INTEGER PRIMARY KEY AUTO_INCREMENT,
-                    room_id INT(11) NOT NULL,
                     sender_id INT(11) NOT NULL,
+                    room_code INT(11) NOT NULL,
                     message TEXT NOT NULL,
                     date_created DATETIME NOT NULL
                 )`,

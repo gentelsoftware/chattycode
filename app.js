@@ -37,9 +37,7 @@ const  io=socket(server);
 io.on("connection",(socket)=>{
     socket.on("join_room",(data)=>{
         socket.join(data.room)
-        socket.on("isTyping",data=>{
-            socket.broadcast.to(data.room).emit("isTyping",data);
-        });
+        socket.on("isTyping",data=>{ socket.broadcast.to(data.room).emit("isTyping",data); });
 
         socket.on("inviteUser",data=>{
             let chatty_code=generateRandomNumber();
@@ -58,9 +56,7 @@ io.on("connection",(socket)=>{
                             sms.send(room_chatty_code,data.user_number);
                             io.to(data.room).emit("invite_sent",{code:room_chatty_code,name:data.newuser});
                         }
-                        else{
-                            io.to(data.room).emit("invite_sent",{code:0,name:data.newuser}); 
-                        }
+                        else{ io.to(data.room).emit("invite_sent",{code:0,name:data.newuser}); }
                     });
                 }
                 else{
@@ -75,12 +71,8 @@ io.on("connection",(socket)=>{
             {room_code:data.room,sender_id:data.uid,message:data.message,date_created:new Date().toISOString().slice(0,20)},
             (err,res)=>{
                 if(err) throw err;
-                if(res.affectedRows){
-                    io.to(data.room).emit("message",data);
-                }
-                else{
-                    io.to(data.room).emit("message",data);
-                }
+                if(res.affectedRows){ io.to(data.room).emit("message",data); }
+                else{ io.to(data.room).emit("message",data); }
             });
         });
 
