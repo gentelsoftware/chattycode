@@ -1,4 +1,5 @@
-var socket=io.connect("http://localhost:5000/");
+//var socket=io.connect("http://localhost:5000/");
+var socket=io.connect("http://172.16.31.28:5000/");
 let chatty_code=$("#chatty_code").val();
 let username=$("#user_name").val();
 let userid=$("#user_id").val();
@@ -22,6 +23,8 @@ $("#message-to-send").keyup(function(){
 });
 
 //send message
+$("#message-to-send").focus(function(){$("#chat-history").animate({ scrollTop: $("#chatty_list").height() }, 500);});
+
 $("#send_message").click(function(){
     let message=$("#message-to-send").val();
     $("#message-to-send").val("");
@@ -83,12 +86,9 @@ function typeNote(data){
 
 function newMember(data){
     if(!$("#chatty_member").find(`#uid_${data.uid}`).length){
-        $("#chatty_member").append(`<li class="clearfix members" id='uid_${data.uid}'>
-                                    <img src="/static/images/default.jpg" width='40px' height='40px' alt="avatar" />
-                                    <div class="about">
-                                        <div class="name">${data.uname}</div>
-                                    </div>
-                                </li>`);
+        $("#chatty_member").append(`<li class="clearfix members align-left" id='uid_${data.uid}'>
+                                        <i class="material-icons valign">account_circle</i> &nbsp; ${data.uname} xxxx
+                                    </li>`);
     } 
 }
 /* END */
@@ -104,6 +104,13 @@ $(document).mouseup(function(e) {
     if($(".tools").is(":visible")){
         var container =  $(".tools");
         if(!container.is(e.target) && container.has(e.target).length === 0) { container.fadeOut();}
+    }
+
+
+    //stay focused once user click the send button
+    if (!$("#message-to-send").is(":focus")) {
+        var container2 =  $(".chat-message");
+        if(!container2.is(e.target) && container2.has(e.target).length === 1) { $("#message-to-send").focus();}
     }
 });
 

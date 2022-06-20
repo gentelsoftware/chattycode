@@ -79,9 +79,9 @@ get_route.get("/chatty/:room_code",isAuth,(req,res)=>{
                 if(u_res.length){
                     for(let i=0;i<u_res.length; i++){
 
-                        let list=`<li class="clearfix members" id='uid_${u_res[i].member_id}'> <img src="/static/images/default.jpg" style='width:50px;height:50px;' alt="avatar" />
-                                    <div class="about"> <div class="name">${u_res[i].name}</div> <div class="status"></div></div>
-                                </li>`;
+                        let list=` <li class="clearfix members align-left" id='uid_${u_res[i].member_id}'>
+                                        <i class="material-icons valign">account_circle</i> &nbsp; ${u_res[i].name}
+                                    </li>`;
 
                         if(req.cookies.user_id==u_res[i].member_id){ list=""; }
                         

@@ -3,15 +3,14 @@
 <head>
   <!-- metaz -->
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>chatty code</title>
-
   <!-- custom style goes down here -->
- <!--  <link rel="stylesheet" href="/static/css/chattycode.css"> -->
   <link rel="stylesheet" href="/static/css/max_width_435.css">
-  <link rel="stylesheet" href="/static/css/max_width_800.css">
-  <link rel="stylesheet" href="/static/css/max_width_1000.css">
+  <!-- <link rel="stylesheet" href="/static/css/max_width_800.css"> -->
+  <!-- <link rel="stylesheet" href="/static/css/max_width_1000.css">
   <link rel="stylesheet" href="/static/css/max_width_1150.css">
-  <link rel="stylesheet" href="/static/css/max_width_1151.css">
+  <link rel="stylesheet" href="/static/css/max_width_1151.css"> -->
   <link rel="stylesheet" href="/static/css/max_width_desktop.css">
 
   <!-- other style -->
@@ -34,28 +33,29 @@
 
       <!-- Chat Room Handle -->
       <div class="chat-header clearfix">
-        <div class="top row" style="margin:0px !important;height:100%;">
-          <div class="col s10 m10 l10 xl10">
-            <div class="chat-with"><%- locals.room_name %></div>
-            <div class="chat-num-messages"><%- locals.chattycode %></div>
+        <div class="top row valign-wrapper" style="margin:0px !important;height:100%;">
+          <div class="col s10 m10 l10 xl10 valign-wrapper">
+            <div class="chat-with valign"><%- locals.room_name %></div>
           </div>
-          <div class="col s2 m2 l2 xl2 valign-wrapper" style="height:100%;text-align: center !important;">
-            <i class="material-icons" onclick="location.replace('/logout')">arrow_forward</i>
+          <div class="col s2 m2 l2 xl2 center-align" style="height:100%;">
+            <i class="material-icons center-align" onclick="location.replace('/logout')">arrow_forward</i>
           </div>
         </div>
       </div>
       
       <!-- message body -->
-      <div class="chat-history" id="chat-history" ><ul id="chatty_list"><%- locals.messages %></ul></div>
+      <div class="chat-history" id="chat-history" >
+        <ul id="chatty_list"> <%- locals.messages %> </ul>
+      </div>
       <!-- end message body -->
 
       <!-- Message input -->
-      <div class="chat-message clearfix">
+      <div class="chat-message clearfix valign-wrapper">
         <input type="hidden" id="chatty_code" value="<%- locals.chattycode %>">
         <input type="hidden" id="user_name" value="<%- locals.user_name %>">
         <input type="hidden" id="user_id" value="<%- locals.user_id %>">
-        <textarea name="message-to-send" id="message-to-send" placeholder ="<%- locals.username %> Type your message" rows="3"></textarea>    
-        <button id="send_message"><i class="material-icons">send</i></button>
+        <textarea name="message-to-send" id="message-to-send" class="valign-wrapper" placeholder ="Type your message"></textarea>    
+        <button id="send_message" class="center-align"><i class="material-icons valign">send</i></button>
       </div>
       <!-- end message input -->
 
@@ -72,6 +72,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
   <script src="/static/js/index.js"></script>
+  <!-- <script src='/static/js/autosize.min.js'></script>
+  <script>autosize(document.querySelectorAll('textarea'));</script> -->
 </body>
 </html>
  
